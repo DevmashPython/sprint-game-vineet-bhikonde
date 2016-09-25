@@ -1,0 +1,44 @@
+import msvcrt
+import time
+right_count=down_count=0
+print "Press Enter To Start..."
+raw_input()
+s_time=time.time()
+
+while 1:
+	key=msvcrt.getch()
+	if key!='d':
+		print "You have lost the game...."
+		break
+	else:
+		right_count=right_count+1
+		print "--> ",
+		if right_count==5:
+			print "Press down arrow key..."
+			while 1:
+				key=msvcrt.getch()
+				if key!='s':
+					print "You have lost the game...."
+					break
+				else:
+					down_count=down_count+1
+					print "\t\t\t--> "
+					if down_count==5:
+						print "Press right arrow key...",
+
+						while 1:
+							key=msvcrt.getch()
+							if key!='d':
+								print "You have lost the game....",
+								break
+							else:
+								right_count=right_count+1
+								print "--> ",
+								if right_count==10:
+									break
+				if right_count==10:
+					break
+	if right_count==10:
+		break					
+time_elapsed=time.time() - s_time
+print "Game over. Time taken: " + str(time_elapsed)							
